@@ -53,7 +53,7 @@ turnaround time</b>(총 처리 시간) - running에 있는 시간 = waiting time
 
 ---
 
-***스케줄링 알고리즘(Scheduling Algorithms***
+***스케줄링 알고리즘(Scheduling Algorithms)***
 
 - FCFS (First Come First Served) 스케줄링
     - 가장 먼저 요청한 프로세스에 CPU를 할당해주는 방식이다.
@@ -71,9 +71,36 @@ turnaround time</b>(총 처리 시간) - running에 있는 시간 = waiting time
     - 기아(Starvation) 문제가 발생할 수 있다. 기아 문제란 낮은 우선순위의 프로세스가 절대 실행되지 않는 문제를 뜻함.
     - 기아문제를 해결하기 위해서 노화(aging)를 사용할 수 있다. 시간이 지날수록 프로세스의 우선순위를 높여주는 식.
 - Round Robin(RR) 스케줄링
-    - 각각의 프로세스에 동일한 CPU 할당 시간을 부여해서 해당 시간 동안만 CPU를 이용하게 한다.
+    - 각각의 프로세스에 동일한 CPU <u>할당 시간</u>(타임 퀀텀)을 부여해서 해당 시간 동안만 CPU를 이용하게 한다.
     - 할당 시간 내에 처리를 완료하지 못하면 다음 프로세스로 넘어가므로 선점형 방식이다.
 - 다단계 큐 (Multilevel-Queue) 스케줄링
-    - 작업들을 여러 종류의 그룹으로 나누어 여러 개의 Queue를 사용한다.
+    - 작업들을 여러 종류의 그룹으로 나누어 여러 개의 Queue를 사용한다.(신분 이동 x)
 - 다단계 피드백  (Multilevel-Feedback-Queue) 스케줄링
-    - 다단계 큐에서 자신에게 할당된 Time Quantum을 다 사용한 프로세스는 밑으로 내려가고 Time Quantum을 다 채우지 못한 프로세스는 원래 큐 위치 그대로 둔다.
+    - 다단계 큐에서 자신에게 할당된 Time Quantum을 다 사용한 프로세스는 밑으로 내려가고 Time Quantum을 다 채우지 못한 프로세스는 원래 큐 위치 그대로 둔다.(신분 상하승)
+
+---
+
+***다중 처리기(Multiple Processor Scheduling)***
+
+뜻 -> 여러 개의 CPU가 있는 다중 처리기 시스템 스케줄링
+
+1. 비대칭 다중 처리 (Asymmetric Multiprocessing)
+    - 오직 하나의 코어만 시스템 자료구조에 접근한다.
+        - 하나의 처리기만 시스템 자료구조에 접근하여 처리기 간의 자료들을 공유할 필요 없다. 단점 -> master server가 전체 시스템 성능을 저하할 수 있는 병목 발생할 수 있다.
+
+
+2. 대칭 다중 처리 (Symmetric Multiprocessing : SMP)
+    - 각 처리기(Processor)가 독자적인 스케줄링을 수행하는 방식
+        - 다중 처리기를 지원하기 위한 표준 접근 방식 각 Processor는 스스로 스케줄링할 수 있다.
+        - 스케줄 대상이 되는 스레드를 관리하기 위한 두 가지 가능한 전략
+            - 모든 스레드가 공통 준비 큐에 있을 수 있다. (common ready queue)
+            - 각 프로세서는 자신만의 스레드 큐를 가질 수 있다. (per-core run queues)
+
+
+3. 부하 균등화 (Load Balancing)
+    - 부하가 각 처리기에서 균등하도록 배분하는 시스템 Processor가 하나 이상이라는 것을 최대한 활용하려면, 부하를 모든 처리기에 균등하게 배분하는 것이 중요하다. push migration과 pull
+      migration은 서로 상호 배타적인 것이 아니다. 실제로 병렬적으로 구현된다.
+        - (1) push migration : 특정 작업이 주기적으로 각 처리기의 부하를 검사하고 만일 불균형 상태로 밝혀지면 과부하인 처리기에서 상대적으로 덜 바쁜 처리기로 프로세스를 이동시킨다. (
+          push)
+        - (2) pull migration : 쉬고 있는 처리기가 바쁜 처리기의 처리를 기다리고 있는 프로세스를 가져온다. (pull)
+
