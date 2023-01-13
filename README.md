@@ -38,4 +38,5 @@
 ### 데이터베이스
 
 [1) database-outline](https://github.com/bellCold/CS-Study/blob/main/database/database-outline/README.md)
-[1) relation-data-model](https://github.com/bellCold/CS-Study/blob/main/network/relation-data-model/README.md)
+
+[2) relation-data-model](https://github.com/bellCold/CS-Study/blob/main/database/relation-data-model/README.md)
