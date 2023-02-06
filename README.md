@@ -40,3 +40,11 @@
 [1) database-outline](https://github.com/bellCold/CS-Study/blob/main/database/database-outline/README.md)
 
 [2) relation-data-model](https://github.com/bellCold/CS-Study/blob/main/database/relation-data-model/README.md)
+
+[3) database-design-and-ER-model](https://github.com/bellCold/CS-Study/blob/main/database/database-design-and-ER-model/README.md)
+
+[4) normalization](https://github.com/bellCold/CS-Study/blob/main/database/normalization/README.md)
+
+[5) relation-algebra](https://github.com/bellCold/CS-Study/blob/main/database/relation-algebra/README.md)
+
+[6) views-and-system-catalog](https://github.com/bellCold/CS-Study/blob/main/database/views-and-system-catalog/README.md)
