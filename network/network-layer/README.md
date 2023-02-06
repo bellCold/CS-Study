@@ -10,7 +10,7 @@
 ---
 ***IP protocol 구조***
 <div>
-  <img src="ip-protocol.png" width="300">
+  <img src="Ip-protocol.png" width="300">
 </div>
 
 * version : IP version
